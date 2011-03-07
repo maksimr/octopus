@@ -1,0 +1,38 @@
+☭
+octopus.js 
+https://github.com/maksimr/octopus
+
+|||||||||||||||||||||||||||||||||||
+||                               ||
+||	AUTHOR:  Maksim Ryzhikov		 ||
+||	NAME:    octopus						 ||
+||	EMAIL:   rv.maksim@gmail.com ||
+||  FOR:     pentadactyl         ||
+||	VERSION: 0.1								 ||
+||                               ||
+|||||||||||||||||||||||||||||||||||
+
+
+»» Description:
+
+	  This plugin allows you to manage folders under the "git".
+	  Command applies to all folders IN THE FOLDER "barrel".
+																   -----------------------
+
+    Full path to "barrel" should be: ~/.pentadactyl/plugins/barrel
+
+
+»» Dependences:
+   You must have _lib-app.js
+
+»» Examples:
+
+	  For example you can pull changes for all plugins at once, using command:
+		+-------------------------------------------------+
+		| :octopus -command=pull <remoate-name> <branch>  |
+		+-------------------------------------------------+
+
+	  Or check status plugins:
+		+-----------------------------------+
+		| :octopus -command=status          |
+		+-----------------------------------+
