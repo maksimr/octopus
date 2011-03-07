@@ -31,7 +31,7 @@ commands.add(["octo[pus]"], "Git Mannager", function (args) {
 			var git_dir_path = ((path.search(/\\/) != -1) ? path + "\\": path + "/") + ".git";
 			var st = "git --git-dir=" + git_dir_path + " --work-tree=" + path + " " + cmd;
 			var result = dactyl.modules.io.system(st);
-			dactyl.echomsg("OCTOPUS:»» " + result);
+			dactyl.echomsg("OCTOPUS:"+array[i].leafName.toUpperCase()+" »» " + result);
 		}
 	}
 },
