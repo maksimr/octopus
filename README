@@ -26,12 +26,17 @@ https://github.com/maksimr/octopus
 
 »» Examples:
 
-		For example you can pull changes for all plugins at once, using command:
+		For example you can fetch changes for all plugins at once, using command:
 		+-------------------------------------------------+
-		| :octopus -command=pull <remoate-name> <branch>  |
+		| :octopus fetch <remoate-name>                   |
 		+-------------------------------------------------+
 
 		Or check status plugins:
 		+-----------------------------------+
-		| :octopus -command=status          |
+		| :octopus status                   |
+		+-----------------------------------+
+
+To execute command for one directory, you must define optoins -directory or -D 
+		+-----------------------------------+
+		| :octopus -D octopus status        |
 		+-----------------------------------+
