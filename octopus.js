@@ -12,7 +12,7 @@
 var app = dactyl.plugins.app;
 var cmd = "status";
 
-commands.add(["octo[pus]"], "Git Mannager", function (args) {
+group.commands.add(["octo[pus]"], "Git Mannager", function (args) {
 	//check on input command by user
 	if (args['-command']) {
 		cmd = args['-command'];
