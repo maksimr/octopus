@@ -9,7 +9,7 @@ var INFO =
     summary="Octopus: gives you the ability to manage folders under git"
     xmlns={NS}>
     <author email="rv.maksim@gmail.com">Ryzhikov Maksim</author>
-    <license href="http://sam.zoy.org/wtfpl/">WTFPL</license>
+    <license href="http://www.gnu.org/licenses/gpl.html">GPL</license>
     <project name="Pentadactyl" minVersion="1.0"/>
     <p>
 			This plugin allow you manage git's commands
@@ -21,6 +21,12 @@ var INFO =
 			If you want to use the command only for one directory,
 			you must define option -directory or shortcut -D and 
 			select the directory
+    </p>
+    <p>
+      NOTE: Define git on "Windows". You must download "Git" from <a> http://git-scm.com/ </a>  
+      and add in "Environment Variables" %PATH% 
+      (System Properties>Environment Variables>System variables>Path) path to git 
+      example C:\Program Files\Git\bin and restart computer.
     </p>
     <p>
 			BUGS: Yet not possible to use the command "pull",
@@ -79,7 +85,8 @@ var OCTOPUS = {
 	command: "status",
 	rootPath: function(homeDir){
 		var dir = homeDir||app.ccDir(); //Get home directory
-		app.append(dir, ".pentadactyl", "plugins", "barrel"); //Git plugins path
+    var rootPlugin = (navigator.platform.toLowerCase().indexOf("win"))? ".pentadactyl":"pentadactyl";//check on platform
+		app.append(dir, rootPlugin, "plugins", "barrel"); //Git plugins path
 		return dir;//nsIFile
 	},
 	directory: function () {
@@ -98,7 +105,8 @@ var OCTOPUS = {
 	exec: function(dir){//dir is nsIFile
 		var path = dir.path,result;//path for dir
 		var git_dir_path = ((path.search(/\\/) != -1) ? path + "\\": path + "/") + ".git";//complete git path
-		var st = "git --git-dir=" + git_dir_path + " --work-tree=" + path + " " + this.command; //constructed git command
+		var st = "git --git-dir=\""+ git_dir_path + "\" --work-tree=\"" + path + "\" " + this.command; //constructed git command,add \" for fix bug on windows
+    app.console.log(window);
 		try{
 			result = dactyl.modules.io.system(st);//exec command
 		}catch(e){ 
