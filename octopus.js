@@ -85,7 +85,7 @@ var OCTOPUS = {
 	command: "status",
 	rootPath: function(homeDir){
 		var dir = homeDir||app.ccDir(); //Get home directory
-    var rootPlugin = (navigator.platform.toLowerCase().indexOf("win"))? ".pentadactyl":"pentadactyl";//check on platform
+    var rootPlugin = (navigator.platform.toLowerCase().indexOf("win"))? ".pentadactyl":"pentadactyl";//check on platform util.OS.isWindows ?
 		app.append(dir, rootPlugin, "plugins", "barrel"); //Git plugins path
 		return dir;//nsIFile
 	},
@@ -105,8 +105,7 @@ var OCTOPUS = {
 	exec: function(dir){//dir is nsIFile
 		var path = dir.path,result;//path for dir
 		var git_dir_path = ((path.search(/\\/) != -1) ? path + "\\": path + "/") + ".git";//complete git path
-		var st = "git --git-dir=\""+ git_dir_path + "\" --work-tree=\"" + path + "\" " + this.command; //constructed git command,add \" for fix bug on windows
-    app.console.log(window);
+		var st = "git --git-dir='"+ git_dir_path + "' --work-tree='" + path + "' " + this.command; //constructed git command
 		try{
 			result = dactyl.modules.io.system(st);//exec command
 		}catch(e){ 
