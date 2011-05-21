@@ -1,10 +1,11 @@
+//INFORMATION {{{
 var INFO =
-<plugin name="octopus" version="0.2"
+<plugin name="octopus" version="0.3"
     href="https://github.com/maksimr/octopus"
     summary="Octopus: gives you the ability to manage folders under git"
     xmlns={NS}>
     <author email="rv.maksim@gmail.com">Ryzhikov Maksim</author>
-    <license href="http://sam.zoy.org/wtfpl/">WTFPL</license>
+    <license href="http://www.gnu.org/licenses/gpl.html">GPL</license>
     <project name="Pentadactyl" minVersion="1.0"/>
     <p>
 			This plugin allow you manage git's commands
@@ -16,6 +17,12 @@ var INFO =
 			If you want to use the command only for one directory,
 			you must define option -directory or shortcut -D and 
 			select the directory
+    </p>
+    <p>
+      NOTE: Define git on "Windows". You must download "Git" from <a> http://git-scm.com/ </a>  
+      and add in "Environment Variables" %PATH% 
+      (System Properties>Environment Variables>System variables>Path) path to git 
+      example C:\Program Files\Git\bin and restart computer.
     </p>
     <p>
 			BUGS: Yet not possible to use the command "pull",
@@ -66,3 +73,4 @@ var INFO =
         </description>
     </item>
 </plugin>;
+//}}}
