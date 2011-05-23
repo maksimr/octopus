@@ -48,6 +48,8 @@ group.commands.add(["octopus","git"], "Git Mannager", function (args) {
 	OCTOPUS.initialize(dirs);
 },
 {
+  literal: 0,
+	argCount: "1",
 	options: [{
 		names: ["-directory", "-D"],
 		description: "Select specific directory",
