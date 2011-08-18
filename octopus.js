@@ -27,7 +27,7 @@
 		run: function (command, dir) {
 			var result, st = "git --git-dir='" + dir.child(".git").path + "' --work-tree='" + dir.path + "' " + command;
 			try {
-				result = dactyl.modules.io.system(st);
+				result = io.system(st);
 			} catch(e) {
 				result = e;
 			}

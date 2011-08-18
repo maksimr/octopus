@@ -1,6 +1,6 @@
 //INFORMATION {{{
 var INFO =
-<plugin name="octopus" version="0.3"
+<plugin name="octopus" version="0.5"
     href="https://github.com/maksimr/octopus"
     summary="Octopus: gives you the ability to manage folders under git"
     xmlns={NS}>
