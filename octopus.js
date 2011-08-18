@@ -17,10 +17,11 @@
 			var dirs = args['-directories'] || args['-D'],
 			exDirs = (dirs ? this.availabelDirectories.filter(function (dir) {
 				return dirs.indexOf(dir.leafName) >= 0;
-			}) : this.availabelDirectories);
+			}) : this.availabelDirectories),
+			cmd = args.shift();
 
 			exDirs.forEach((function (dir) {
-				this.run(args.shift() || 'status', dir);
+				this.run( cmd || 'status', dir);
 			}).bind(this));
 		},
 		run: function (command, dir) {
