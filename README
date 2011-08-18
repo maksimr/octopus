@@ -14,9 +14,9 @@ var INFO =
 			each of them should be under git.
     </p>
     <p>
-			If you want to use the command only for one directory,
-			you must define option -directory or shortcut -D and 
-			select the directory
+			If you want to use the command only for specific directories,
+			you must define option -directories shortcut -D and 
+			select some directories
     </p>
     <p>
       NOTE: Define git on "Windows". You must download "Git" from <a> http://git-scm.com/ </a>  
