@@ -1,10 +1,11 @@
 /* AUTHOR:  Maksim Ryzhikov
  * NAME:    octopus
  * VERSION: 0.5
- * NOTE: Experimental version
+ * TODO: Solve Problem with Windows
  */
 
 (function () {
+	"use strict";
 	var barrel = io.getRuntimeDirectories('plugins/barrel').shift(),
 
 	OCTOPUS = {
@@ -21,7 +22,7 @@
 			cmd = args.shift();
 
 			exDirs.forEach((function (dir) {
-				this.run( cmd || 'status', dir);
+				this.run(cmd || 'status', dir);
 			}).bind(this));
 		},
 		run: function (command, dir) {
