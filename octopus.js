@@ -1,13 +1,13 @@
 /* AUTHOR:  Maksim Ryzhikov
  * NAME:    octopus
- * VERSION: 0.5
- * NOTE: Experimental version
+ * VERSION: 0.6
  */
 
 (function () {
 	var barrel = io.getRuntimeDirectories('plugins/barrel').shift(),
 
 	OCTOPUS = {
+    version: "0.6",
 		availabelDirectories: (function () {
 			return barrel.readDirectory(true).filter(function (dir) {
 				return dir.child(".git").exists();
@@ -18,24 +18,26 @@
 			exDirs = (dirs ? this.availabelDirectories.filter(function (dir) {
 				return dirs.indexOf(dir.leafName) >= 0;
 			}) : this.availabelDirectories),
-			cmd = args.shift();
+			cmd = (args.shift() || 'status'),
+      fn = this.run.bind(this,cmd);
 
-			exDirs.forEach((function (dir) {
-				this.run( cmd || 'status', dir);
-			}).bind(this));
+			exDirs.forEach(fn);
 		},
 		run: function (command, dir) {
-			var result, st = "git --git-dir='" + dir.child(".git").path + "' --work-tree='" + dir.path + "' " + command;
+			var result, _cwd = io.cwd,
+			st = "git " + command;
 			try {
+				io.cwd = dir.path;
 				result = io.system(st);
 			} catch(e) {
 				result = e;
 			}
 			dactyl.echomsg("OCTOPUS:" + dir.leafName.toUpperCase() + " »» " + result);
+			io.cwd = _cwd;
 		}
 	};
 
-	group.commands.add(["octopus", "git"], "Git Mannager", function (args) {
+	group.commands.add(["octopus", "git"], "Git Mannager (version "+OCTOPUS.version+")", function (args) {
 		OCTOPUS.execute(args);
 	},
 	{
