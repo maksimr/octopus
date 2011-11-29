@@ -4,6 +4,7 @@
  */
 
 (function () {
+	"use strict";
 	var barrel = io.getRuntimeDirectories('plugins/barrel').shift(),
 
 	OCTOPUS = {
