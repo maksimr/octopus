@@ -15,7 +15,7 @@ octopus =
   execute: (args) ->
     dirs = args['-directories'] or args['-D']
     dirs = if dirs then @directories.filter (dir)-> (dirs.indexOf(dir.leafName) >=0) else @directories
-    cmd = args.shift() or "status"
+    cmd = "#{args}" or "status"
     fn = @_call.bind this, cmd
 
     dirs.forEach fn
@@ -34,7 +34,6 @@ group.commands.add ["octopus", "git"], "Git Manager (version #{octopus.version})
   octopus.execute(args)
 ,{
   literal: 0
-  argCount: "*"
   options: [{
     names: ["-directories","-D"]
     description: "Select specific directories"

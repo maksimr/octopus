@@ -14,7 +14,7 @@
       dirs = dirs ? this.directories.filter(function(dir) {
         return dirs.indexOf(dir.leafName) >= 0;
       }) : this.directories;
-      cmd = args.shift() || "status";
+      cmd = ("" + args) || "status";
       fn = this._call.bind(this, cmd);
       return dirs.forEach(fn);
     },
@@ -35,7 +35,6 @@
     return octopus.execute(args);
   }, {
     literal: 0,
-    argCount: "*",
     options: [
       {
         names: ["-directories", "-D"],
