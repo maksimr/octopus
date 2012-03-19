@@ -4,7 +4,7 @@
 
 "use strict"
 
-rootDir = io.getRuntimeDirectories('plugins/barrel').shift()
+rootDir = io.getRuntimeDirectories('plugins').shift()
 
 gitDirs = rootDir.readDirectory(true).filter (dir)->
   dir.child(".git").exists()

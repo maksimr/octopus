@@ -1,10 +1,13 @@
 (function() {
   "use strict";
   var gitDirs, octopus, rootDir;
-  rootDir = io.getRuntimeDirectories('plugins/barrel').shift();
+
+  rootDir = io.getRuntimeDirectories('plugins').shift();
+
   gitDirs = rootDir.readDirectory(true).filter(function(dir) {
     return dir.child(".git").exists();
   });
+
   octopus = {
     version: "0.6.1",
     directories: gitDirs,
@@ -31,6 +34,7 @@
       return io.cwd = _cwd;
     }
   };
+
   group.commands.add(["octopus", "git"], "Git Manager (version " + octopus.version + ")", function(args) {
     return octopus.execute(args);
   }, {
@@ -46,4 +50,5 @@
       }
     ]
   });
+
 }).call(this);
